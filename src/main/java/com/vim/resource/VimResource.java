@@ -84,7 +84,7 @@ public class VimResource {
     @POST
     @Path("resources/create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Resource createResource(@QueryParam("memory") final String memory, @QueryParam("storage") final String storage) {
+    public Resource createResource(@FormParam("memory") final String memory, @FormParam("storage") final String storage) {
         return vimService.createResource(memory, storage);
     }
 
@@ -92,7 +92,7 @@ public class VimResource {
     @POST
     @Path("resources/delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public String deleteResource(@QueryParam("resourceId") final String resourceId) {
+    public String deleteResource(@FormParam("resourceId") final String resourceId) {
         if (vimService.deleteResource(resourceId)) {
             return "Successed!";
         } else

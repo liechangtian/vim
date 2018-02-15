@@ -7,14 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
-import javax.ws.rs.core.Context;
+import javax.persistence.PersistenceContext;
 
 /***
  * Created on 2018/2/13 at 18:51.  
  ***/
 @Repository
 public class VimDao {
-    @Context
+    @PersistenceContext
     private EntityManager entityManager;
 
     public VimDao() {
