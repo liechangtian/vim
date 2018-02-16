@@ -2,6 +2,7 @@ package com.vim.dao;
 
 import com.vim.domain.Image;
 import com.vim.domain.Resource;
+import com.vim.domain.Vnf;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -33,6 +34,12 @@ public class VimDao {
     public Image storeImage(final Image entity) {
         Image image = entityManager.merge(entity);
         return image;
+    }
+
+    @Transactional
+    public Vnf storeVnf(final Vnf entity) {
+        Vnf vnf = entityManager.merge(entity);
+        return vnf;
     }
 
     @Transactional

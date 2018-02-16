@@ -88,6 +88,14 @@ public class VimResource {
         return vimService.createResource(memory, storage);
     }
 
+    // 可考虑添加更多vnf信息
+    @POST
+    @Path("vnfs/instantiate")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String instantiateVnf(@FormParam("vnfId") final String vnfId, @FormParam("packageId") final String packageId) {
+        return vimService.instantiateVnf(vnfId, packageId);
+    }
+
 
     @POST
     @Path("resources/delete")

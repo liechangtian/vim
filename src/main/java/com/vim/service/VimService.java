@@ -3,6 +3,7 @@ package com.vim.service;
 import com.vim.dao.VimDao;
 import com.vim.domain.Image;
 import com.vim.domain.Resource;
+import com.vim.domain.Vnf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,13 @@ public class VimService {
         int s = Integer.parseInt(storage);
         Resource resource = new Resource(m, s);
         return vimDao.storeResource(resource);
+    }
+
+    // 实例化VNF，返回VNF管理地址，测试时返回packgeId-vnfId作为VnfUrl
+    public String instantiateVnf(final String vnfId, final String packageId) {
+        Vnf vnf=new Vnf(vnfId,packageId);
+        vimDao.storeVnf(vnf);
+        return packageId + "-" + vnfId;
     }
 
     // 释放资源，删除注册信息
